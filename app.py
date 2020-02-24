@@ -6,7 +6,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 
-from flask import Flask, jsonify, render_template, request, Response
+from flask import Flask, jsonify, json, render_template, request, Response
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
