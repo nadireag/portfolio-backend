@@ -52,7 +52,10 @@ def update():
             db.session.add(new_info)
             db.session.commit()
             
-            return make_response(f'{data} successfully created!')
+            response = flask.jsonify({ 'response': data })
+            response.headers.add('Access-Control-Allow-Origin', '*')
+
+            return response
 
 if __name__ =="__main__":
     app.run(debug=True)
