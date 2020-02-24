@@ -56,6 +56,12 @@ def update():
             response.headers.add('Access-Control-Allow-Origin', '*')
 
             return response
+            
+    if request.method == 'OPTIONS':
+            response = flask.jsonify({ 'response': 'success' })
+            response.headers.add('Access-Control-Allow-Origin', '*')
+
+            return response
 
 if __name__ =="__main__":
     app.run(debug=True)
