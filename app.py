@@ -58,7 +58,8 @@ def update():
             db.session.add(new_info)
             db.session.commit()
             
-            return Response(f'data', status=200, mimetype='application/json')
+            return Response(f'{data}', status=200, mimetype='application/json')
+            # return make_response(f'{data} successfully created!')
 
     if request.method == 'OPTIONS':
 
