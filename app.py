@@ -62,7 +62,7 @@ def update():
 
     if request.method == 'OPTIONS':
 
-        return Response(f'{}', status=200, mimetype='application/json')
+        return Response('{}', status=200, mimetype='application/json')
 
 if __name__ =="__main__":
     app.run(debug=True)
