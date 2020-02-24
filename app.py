@@ -6,7 +6,8 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 
-from flask import Flask, flask, jsonify, render_template, request, make_response
+from flask import Flask, jsonify, render_template, request, make_response
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 from dotenv import load_dotenv
@@ -34,10 +35,15 @@ Base.prepare(db.engine, reflect=True)
 # save references to the table
 Info = Base.classes.info
 
+# cors config
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 # create the routes
 @app.route('/api/update', methods=['POST', 'OPTIONS'])
 def update():
+
     if request.method == 'POST':
+
         if request.is_json:
 
             data = request.get_json()
@@ -52,16 +58,11 @@ def update():
             db.session.add(new_info)
             db.session.commit()
             
-            response = flask.jsonify({ 'response': data })
-            response.headers.add('Access-Control-Allow-Origin', '*')
-
-            return response
+            return make_response(f'{data} successfully created!')
 
     if request.method == 'OPTIONS':
-            response = flask.jsonify({ 'response': 'success' })
-            response.headers.add('Access-Control-Allow-Origin', '*')
 
-            return response
+        return make_response(f'successful!')
 
 if __name__ =="__main__":
     app.run(debug=True)
