@@ -6,7 +6,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 
-from flask import Flask, jsonify, render_template, request, make_response
+from flask import Flask, flask, jsonify, render_template, request, make_response
 from flask_sqlalchemy import SQLAlchemy
 
 from dotenv import load_dotenv
@@ -56,7 +56,7 @@ def update():
             response.headers.add('Access-Control-Allow-Origin', '*')
 
             return response
-            
+
     if request.method == 'OPTIONS':
             response = flask.jsonify({ 'response': 'success' })
             response.headers.add('Access-Control-Allow-Origin', '*')
