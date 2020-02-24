@@ -58,12 +58,14 @@ def update():
             db.session.add(new_info)
             db.session.commit()
             
-            return Response(f'{data}', status=200, mimetype='application/json')
+            return json.dumps(data), 200, {'ContentType':'application/json'} 
+            # return Response(f'{data}', status=200, mimetype='application/json')
             # return make_response(f'{data} successfully created!')
 
     if request.method == 'OPTIONS':
 
-        return Response('{}', status=200, mimetype='application/json')
+        return json.dumps({}), 200, {'ContentType':'application/json'} 
+        # return Response('{}', status=200, mimetype='application/json')
 
 if __name__ =="__main__":
     app.run(debug=True)
