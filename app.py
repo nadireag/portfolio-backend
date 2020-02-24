@@ -42,6 +42,8 @@ def update():
 
             data = request.get_json()
 
+            print(data)
+            
             name = data['name']
             email = data['email']
             message = data['message']
