@@ -35,7 +35,7 @@ Base.prepare(db.engine, reflect=True)
 Info = Base.classes.info
 
 # create the routes
-@app.route('/api/update', methods=['POST'])
+@app.route('/api/update', methods=['POST', 'OPTIONS'])
 def update():
     if request.method == 'POST':
         if request.is_json:
