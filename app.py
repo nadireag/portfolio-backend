@@ -6,7 +6,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 
-from flask import Flask, jsonify, render_template, request, make_response
+from flask import Flask, jsonify, render_template, request, Response
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
@@ -58,11 +58,11 @@ def update():
             db.session.add(new_info)
             db.session.commit()
             
-            return make_response({data}, 200)
+            return Response(f'data', status=200, mimetype='application/json')
 
     if request.method == 'OPTIONS':
 
-        return make_response({}, 200)
+        return Response(f'{}', status=200, mimetype='application/json')
 
 if __name__ =="__main__":
     app.run(debug=True)
