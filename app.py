@@ -58,11 +58,11 @@ def update():
             db.session.add(new_info)
             db.session.commit()
             
-            return make_response(f'{data} successfully created!')
+            return make_response({data}, 200)
 
     if request.method == 'OPTIONS':
 
-        return make_response(f'successful!')
+        return make_response({}, 200)
 
 if __name__ =="__main__":
     app.run(debug=True)
